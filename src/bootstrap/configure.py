@@ -55,18 +55,17 @@ o("sanitizers", "build.sanitizers", "build the sanitizer runtimes (asan, lsan, m
 o("dist-src", "rust.dist-src", "when building tarballs enables building a source tarball")
 o("cargo-native-static", "build.cargo-native-static", "static native libraries in cargo")
 o("profiler", "build.profiler", "build the profiler runtime")
-o("emscripten", None, "compile the emscripten backend as well as LLVM")
 o("full-tools", None, "enable all tools")
 o("lld", "rust.lld", "build lld")
-o("lldb", "rust.lldb", "build lldb")
 o("missing-tools", "dist.missing-tools", "allow failures when building tools")
-o("use-libcxx", "llvm.use_libcxx", "build LLVM with libc++")
+o("use-libcxx", "llvm.use-libcxx", "build LLVM with libc++")
+o("control-flow-guard", "rust.control-flow-guard", "Enable Control Flow Guard")
 
-o("cflags", "llvm.cflags", "build LLVM with these extra compiler flags")
-o("cxxflags", "llvm.cxxflags", "build LLVM with these extra compiler flags")
-o("ldflags", "llvm.ldflags", "build LLVM with these extra linker flags")
+v("llvm-cflags", "llvm.cflags", "build LLVM with these extra compiler flags")
+v("llvm-cxxflags", "llvm.cxxflags", "build LLVM with these extra compiler flags")
+v("llvm-ldflags", "llvm.ldflags", "build LLVM with these extra linker flags")
 
-o("llvm-libunwind", "rust.llvm_libunwind", "use LLVM libunwind")
+o("llvm-libunwind", "rust.llvm-libunwind", "use LLVM libunwind")
 
 # Optimization and debugging options. These may be overridden by the release
 # channel, etc.
@@ -134,9 +133,15 @@ v("musl-root-mips", "target.mips-unknown-linux-musl.musl-root",
   "mips-unknown-linux-musl install directory")
 v("musl-root-mipsel", "target.mipsel-unknown-linux-musl.musl-root",
   "mipsel-unknown-linux-musl install directory")
+v("musl-root-mips64", "target.mips64-unknown-linux-muslabi64.musl-root",
+  "mips64-unknown-linux-muslabi64 install directory")
+v("musl-root-mips64el", "target.mips64el-unknown-linux-muslabi64.musl-root",
+  "mips64el-unknown-linux-muslabi64 install directory")
 v("qemu-armhf-rootfs", "target.arm-unknown-linux-gnueabihf.qemu-rootfs",
   "rootfs in qemu testing, you probably don't want to use this")
 v("qemu-aarch64-rootfs", "target.aarch64-unknown-linux-gnu.qemu-rootfs",
+  "rootfs in qemu testing, you probably don't want to use this")
+v("qemu-riscv64-rootfs", "target.riscv64gc-unknown-linux-gnu.qemu-rootfs",
   "rootfs in qemu testing, you probably don't want to use this")
 v("experimental-targets", "llvm.experimental-targets",
   "experimental LLVM targets to build")
@@ -335,10 +340,8 @@ for key in known_args:
         set('build.host', value.split(','))
     elif option.name == 'target':
         set('build.target', value.split(','))
-    elif option.name == 'emscripten':
-        set('rust.codegen-backends', ['llvm', 'emscripten'])
     elif option.name == 'full-tools':
-        set('rust.codegen-backends', ['llvm', 'emscripten'])
+        set('rust.codegen-backends', ['llvm'])
         set('rust.lld', True)
         set('rust.llvm-tools', True)
         set('build.extended', True)
@@ -391,11 +394,12 @@ for target in configured_targets:
 
 
 def is_number(value):
-  try:
-    float(value)
-    return True
-  except ValueError:
-    return False
+    try:
+        float(value)
+        return True
+    except ValueError:
+        return False
+
 
 # Here we walk through the constructed configuration we have from the parsed
 # command line arguments. We then apply each piece of configuration by

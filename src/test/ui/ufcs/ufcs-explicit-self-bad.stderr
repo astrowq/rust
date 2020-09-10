@@ -31,14 +31,14 @@ error[E0308]: mismatched `self` parameter type
 LL |     fn dummy2(self: &Bar<T>) {}
    |                     ^^^^^^^ lifetime mismatch
    |
-   = note: expected type `&'a Bar<T>`
-              found type `&Bar<T>`
+   = note: expected reference `&'a Bar<T>`
+              found reference `&Bar<T>`
 note: the anonymous lifetime #1 defined on the method body at 37:5...
   --> $DIR/ufcs-explicit-self-bad.rs:37:5
    |
 LL |     fn dummy2(self: &Bar<T>) {}
-   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-note: ...does not necessarily outlive the lifetime 'a as defined on the impl at 35:6
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^
+note: ...does not necessarily outlive the lifetime `'a` as defined on the impl at 35:6
   --> $DIR/ufcs-explicit-self-bad.rs:35:6
    |
 LL | impl<'a, T> SomeTrait for &'a Bar<T> {
@@ -50,9 +50,9 @@ error[E0308]: mismatched `self` parameter type
 LL |     fn dummy2(self: &Bar<T>) {}
    |                     ^^^^^^^ lifetime mismatch
    |
-   = note: expected type `&'a Bar<T>`
-              found type `&Bar<T>`
-note: the lifetime 'a as defined on the impl at 35:6...
+   = note: expected reference `&'a Bar<T>`
+              found reference `&Bar<T>`
+note: the lifetime `'a` as defined on the impl at 35:6...
   --> $DIR/ufcs-explicit-self-bad.rs:35:6
    |
 LL | impl<'a, T> SomeTrait for &'a Bar<T> {
@@ -61,7 +61,7 @@ note: ...does not necessarily outlive the anonymous lifetime #1 defined on the m
   --> $DIR/ufcs-explicit-self-bad.rs:37:5
    |
 LL |     fn dummy2(self: &Bar<T>) {}
-   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^
 
 error[E0308]: mismatched `self` parameter type
   --> $DIR/ufcs-explicit-self-bad.rs:39:21
@@ -69,14 +69,14 @@ error[E0308]: mismatched `self` parameter type
 LL |     fn dummy3(self: &&Bar<T>) {}
    |                     ^^^^^^^^ lifetime mismatch
    |
-   = note: expected type `&'a Bar<T>`
-              found type `&Bar<T>`
+   = note: expected reference `&'a Bar<T>`
+              found reference `&Bar<T>`
 note: the anonymous lifetime #2 defined on the method body at 39:5...
   --> $DIR/ufcs-explicit-self-bad.rs:39:5
    |
 LL |     fn dummy3(self: &&Bar<T>) {}
-   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-note: ...does not necessarily outlive the lifetime 'a as defined on the impl at 35:6
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^
+note: ...does not necessarily outlive the lifetime `'a` as defined on the impl at 35:6
   --> $DIR/ufcs-explicit-self-bad.rs:35:6
    |
 LL | impl<'a, T> SomeTrait for &'a Bar<T> {
@@ -88,9 +88,9 @@ error[E0308]: mismatched `self` parameter type
 LL |     fn dummy3(self: &&Bar<T>) {}
    |                     ^^^^^^^^ lifetime mismatch
    |
-   = note: expected type `&'a Bar<T>`
-              found type `&Bar<T>`
-note: the lifetime 'a as defined on the impl at 35:6...
+   = note: expected reference `&'a Bar<T>`
+              found reference `&Bar<T>`
+note: the lifetime `'a` as defined on the impl at 35:6...
   --> $DIR/ufcs-explicit-self-bad.rs:35:6
    |
 LL | impl<'a, T> SomeTrait for &'a Bar<T> {
@@ -99,7 +99,7 @@ note: ...does not necessarily outlive the anonymous lifetime #2 defined on the m
   --> $DIR/ufcs-explicit-self-bad.rs:39:5
    |
 LL |     fn dummy3(self: &&Bar<T>) {}
-   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 error: aborting due to 7 previous errors
 

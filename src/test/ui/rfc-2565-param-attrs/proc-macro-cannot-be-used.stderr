@@ -1,228 +1,176 @@
-error[E0658]: the attribute `id` is currently unknown to the compiler and may have meaning added to it in the future
-  --> $DIR/proc-macro-cannot-be-used.rs:11:21
+error: expected an inert attribute, found an attribute macro
+  --> $DIR/proc-macro-cannot-be-used.rs:10:21
    |
 LL | extern "C" { fn ffi(#[id] arg1: i32, #[id] ...); }
    |                     ^^^^^
-   |
-   = note: for more information, see https://github.com/rust-lang/rust/issues/29642
-   = help: add `#![feature(custom_attribute)]` to the crate attributes to enable
 
-error[E0658]: the attribute `id` is currently unknown to the compiler and may have meaning added to it in the future
-  --> $DIR/proc-macro-cannot-be-used.rs:11:38
+error: expected an inert attribute, found an attribute macro
+  --> $DIR/proc-macro-cannot-be-used.rs:10:38
    |
 LL | extern "C" { fn ffi(#[id] arg1: i32, #[id] ...); }
    |                                      ^^^^^
-   |
-   = note: for more information, see https://github.com/rust-lang/rust/issues/29642
-   = help: add `#![feature(custom_attribute)]` to the crate attributes to enable
 
-error[E0658]: the attribute `id` is currently unknown to the compiler and may have meaning added to it in the future
-  --> $DIR/proc-macro-cannot-be-used.rs:15:38
+error: expected an inert attribute, found an attribute macro
+  --> $DIR/proc-macro-cannot-be-used.rs:14:38
    |
 LL | unsafe extern "C" fn cvar(arg1: i32, #[id] mut args: ...) {}
    |                                      ^^^^^
-   |
-   = note: for more information, see https://github.com/rust-lang/rust/issues/29642
-   = help: add `#![feature(custom_attribute)]` to the crate attributes to enable
 
-error[E0658]: the attribute `id` is currently unknown to the compiler and may have meaning added to it in the future
-  --> $DIR/proc-macro-cannot-be-used.rs:18:28
+error: expected an inert attribute, found an attribute macro
+  --> $DIR/proc-macro-cannot-be-used.rs:17:28
    |
 LL | type Alias = extern "C" fn(#[id] u8, #[id] ...);
    |                            ^^^^^
-   |
-   = note: for more information, see https://github.com/rust-lang/rust/issues/29642
-   = help: add `#![feature(custom_attribute)]` to the crate attributes to enable
 
-error[E0658]: the attribute `id` is currently unknown to the compiler and may have meaning added to it in the future
-  --> $DIR/proc-macro-cannot-be-used.rs:18:38
+error: expected an inert attribute, found an attribute macro
+  --> $DIR/proc-macro-cannot-be-used.rs:17:38
    |
 LL | type Alias = extern "C" fn(#[id] u8, #[id] ...);
    |                                      ^^^^^
-   |
-   = note: for more information, see https://github.com/rust-lang/rust/issues/29642
-   = help: add `#![feature(custom_attribute)]` to the crate attributes to enable
 
-error[E0658]: the attribute `id` is currently unknown to the compiler and may have meaning added to it in the future
-  --> $DIR/proc-macro-cannot-be-used.rs:22:9
+error: expected an inert attribute, found an attribute macro
+  --> $DIR/proc-macro-cannot-be-used.rs:21:9
    |
 LL | fn free(#[id] arg1: u8) {
    |         ^^^^^
-   |
-   = note: for more information, see https://github.com/rust-lang/rust/issues/29642
-   = help: add `#![feature(custom_attribute)]` to the crate attributes to enable
 
-error[E0658]: the attribute `id` is currently unknown to the compiler and may have meaning added to it in the future
-  --> $DIR/proc-macro-cannot-be-used.rs:24:16
+error: expected an inert attribute, found an attribute macro
+  --> $DIR/proc-macro-cannot-be-used.rs:23:16
    |
-LL |     let lam = |#[id] W(x), #[id] y| ();
+LL |     let lam = |#[id] W(x), #[id] y: usize| ();
    |                ^^^^^
-   |
-   = note: for more information, see https://github.com/rust-lang/rust/issues/29642
-   = help: add `#![feature(custom_attribute)]` to the crate attributes to enable
 
-error[E0658]: the attribute `id` is currently unknown to the compiler and may have meaning added to it in the future
-  --> $DIR/proc-macro-cannot-be-used.rs:24:28
+error: expected an inert attribute, found an attribute macro
+  --> $DIR/proc-macro-cannot-be-used.rs:23:28
    |
-LL |     let lam = |#[id] W(x), #[id] y| ();
+LL |     let lam = |#[id] W(x), #[id] y: usize| ();
    |                            ^^^^^
-   |
-   = note: for more information, see https://github.com/rust-lang/rust/issues/29642
-   = help: add `#![feature(custom_attribute)]` to the crate attributes to enable
 
-error[E0658]: the attribute `id` is currently unknown to the compiler and may have meaning added to it in the future
-  --> $DIR/proc-macro-cannot-be-used.rs:30:18
+error: expected an inert attribute, found an attribute macro
+  --> $DIR/proc-macro-cannot-be-used.rs:29:18
    |
 LL |     fn inherent1(#[id] self, #[id] arg1: u8) {}
    |                  ^^^^^
-   |
-   = note: for more information, see https://github.com/rust-lang/rust/issues/29642
-   = help: add `#![feature(custom_attribute)]` to the crate attributes to enable
 
-error[E0658]: the attribute `id` is currently unknown to the compiler and may have meaning added to it in the future
-  --> $DIR/proc-macro-cannot-be-used.rs:30:30
+error: expected an inert attribute, found an attribute macro
+  --> $DIR/proc-macro-cannot-be-used.rs:29:30
    |
 LL |     fn inherent1(#[id] self, #[id] arg1: u8) {}
    |                              ^^^^^
-   |
-   = note: for more information, see https://github.com/rust-lang/rust/issues/29642
-   = help: add `#![feature(custom_attribute)]` to the crate attributes to enable
 
-error[E0658]: the attribute `id` is currently unknown to the compiler and may have meaning added to it in the future
-  --> $DIR/proc-macro-cannot-be-used.rs:33:18
+error: expected an inert attribute, found an attribute macro
+  --> $DIR/proc-macro-cannot-be-used.rs:32:18
    |
 LL |     fn inherent2(#[id] &self, #[id] arg1: u8) {}
    |                  ^^^^^
-   |
-   = note: for more information, see https://github.com/rust-lang/rust/issues/29642
-   = help: add `#![feature(custom_attribute)]` to the crate attributes to enable
 
-error[E0658]: the attribute `id` is currently unknown to the compiler and may have meaning added to it in the future
-  --> $DIR/proc-macro-cannot-be-used.rs:33:31
+error: expected an inert attribute, found an attribute macro
+  --> $DIR/proc-macro-cannot-be-used.rs:32:31
    |
 LL |     fn inherent2(#[id] &self, #[id] arg1: u8) {}
    |                               ^^^^^
-   |
-   = note: for more information, see https://github.com/rust-lang/rust/issues/29642
-   = help: add `#![feature(custom_attribute)]` to the crate attributes to enable
 
-error[E0658]: the attribute `id` is currently unknown to the compiler and may have meaning added to it in the future
-  --> $DIR/proc-macro-cannot-be-used.rs:36:22
+error: expected an inert attribute, found an attribute macro
+  --> $DIR/proc-macro-cannot-be-used.rs:35:22
    |
 LL |     fn inherent3<'a>(#[id] &'a mut self, #[id] arg1: u8) {}
    |                      ^^^^^
-   |
-   = note: for more information, see https://github.com/rust-lang/rust/issues/29642
-   = help: add `#![feature(custom_attribute)]` to the crate attributes to enable
 
-error[E0658]: the attribute `id` is currently unknown to the compiler and may have meaning added to it in the future
-  --> $DIR/proc-macro-cannot-be-used.rs:36:42
+error: expected an inert attribute, found an attribute macro
+  --> $DIR/proc-macro-cannot-be-used.rs:35:42
    |
 LL |     fn inherent3<'a>(#[id] &'a mut self, #[id] arg1: u8) {}
    |                                          ^^^^^
-   |
-   = note: for more information, see https://github.com/rust-lang/rust/issues/29642
-   = help: add `#![feature(custom_attribute)]` to the crate attributes to enable
 
-error[E0658]: the attribute `id` is currently unknown to the compiler and may have meaning added to it in the future
-  --> $DIR/proc-macro-cannot-be-used.rs:39:22
+error: expected an inert attribute, found an attribute macro
+  --> $DIR/proc-macro-cannot-be-used.rs:38:22
    |
 LL |     fn inherent4<'a>(#[id] self: Box<Self>, #[id] arg1: u8) {}
    |                      ^^^^^
-   |
-   = note: for more information, see https://github.com/rust-lang/rust/issues/29642
-   = help: add `#![feature(custom_attribute)]` to the crate attributes to enable
 
-error[E0658]: the attribute `id` is currently unknown to the compiler and may have meaning added to it in the future
-  --> $DIR/proc-macro-cannot-be-used.rs:39:45
+error: expected an inert attribute, found an attribute macro
+  --> $DIR/proc-macro-cannot-be-used.rs:38:45
    |
 LL |     fn inherent4<'a>(#[id] self: Box<Self>, #[id] arg1: u8) {}
    |                                             ^^^^^
-   |
-   = note: for more information, see https://github.com/rust-lang/rust/issues/29642
-   = help: add `#![feature(custom_attribute)]` to the crate attributes to enable
 
-error[E0658]: the attribute `id` is currently unknown to the compiler and may have meaning added to it in the future
-  --> $DIR/proc-macro-cannot-be-used.rs:45:15
+error: expected an inert attribute, found an attribute macro
+  --> $DIR/proc-macro-cannot-be-used.rs:41:38
+   |
+LL |     fn issue_64682_associated_fn<'a>(#[id] arg1: u8, #[id] arg2: u8) {}
+   |                                      ^^^^^
+
+error: expected an inert attribute, found an attribute macro
+  --> $DIR/proc-macro-cannot-be-used.rs:41:54
+   |
+LL |     fn issue_64682_associated_fn<'a>(#[id] arg1: u8, #[id] arg2: u8) {}
+   |                                                      ^^^^^
+
+error: expected an inert attribute, found an attribute macro
+  --> $DIR/proc-macro-cannot-be-used.rs:47:15
    |
 LL |     fn trait1(#[id] self, #[id] arg1: u8);
    |               ^^^^^
-   |
-   = note: for more information, see https://github.com/rust-lang/rust/issues/29642
-   = help: add `#![feature(custom_attribute)]` to the crate attributes to enable
 
-error[E0658]: the attribute `id` is currently unknown to the compiler and may have meaning added to it in the future
-  --> $DIR/proc-macro-cannot-be-used.rs:45:27
+error: expected an inert attribute, found an attribute macro
+  --> $DIR/proc-macro-cannot-be-used.rs:47:27
    |
 LL |     fn trait1(#[id] self, #[id] arg1: u8);
    |                           ^^^^^
-   |
-   = note: for more information, see https://github.com/rust-lang/rust/issues/29642
-   = help: add `#![feature(custom_attribute)]` to the crate attributes to enable
 
-error[E0658]: the attribute `id` is currently unknown to the compiler and may have meaning added to it in the future
-  --> $DIR/proc-macro-cannot-be-used.rs:48:15
+error: expected an inert attribute, found an attribute macro
+  --> $DIR/proc-macro-cannot-be-used.rs:50:15
    |
 LL |     fn trait2(#[id] &self, #[id] arg1: u8);
    |               ^^^^^
-   |
-   = note: for more information, see https://github.com/rust-lang/rust/issues/29642
-   = help: add `#![feature(custom_attribute)]` to the crate attributes to enable
 
-error[E0658]: the attribute `id` is currently unknown to the compiler and may have meaning added to it in the future
-  --> $DIR/proc-macro-cannot-be-used.rs:48:28
+error: expected an inert attribute, found an attribute macro
+  --> $DIR/proc-macro-cannot-be-used.rs:50:28
    |
 LL |     fn trait2(#[id] &self, #[id] arg1: u8);
    |                            ^^^^^
-   |
-   = note: for more information, see https://github.com/rust-lang/rust/issues/29642
-   = help: add `#![feature(custom_attribute)]` to the crate attributes to enable
 
-error[E0658]: the attribute `id` is currently unknown to the compiler and may have meaning added to it in the future
-  --> $DIR/proc-macro-cannot-be-used.rs:51:19
+error: expected an inert attribute, found an attribute macro
+  --> $DIR/proc-macro-cannot-be-used.rs:53:19
    |
 LL |     fn trait3<'a>(#[id] &'a mut self, #[id] arg1: u8);
    |                   ^^^^^
-   |
-   = note: for more information, see https://github.com/rust-lang/rust/issues/29642
-   = help: add `#![feature(custom_attribute)]` to the crate attributes to enable
 
-error[E0658]: the attribute `id` is currently unknown to the compiler and may have meaning added to it in the future
-  --> $DIR/proc-macro-cannot-be-used.rs:51:39
+error: expected an inert attribute, found an attribute macro
+  --> $DIR/proc-macro-cannot-be-used.rs:53:39
    |
 LL |     fn trait3<'a>(#[id] &'a mut self, #[id] arg1: u8);
    |                                       ^^^^^
-   |
-   = note: for more information, see https://github.com/rust-lang/rust/issues/29642
-   = help: add `#![feature(custom_attribute)]` to the crate attributes to enable
 
-error[E0658]: the attribute `id` is currently unknown to the compiler and may have meaning added to it in the future
-  --> $DIR/proc-macro-cannot-be-used.rs:54:19
+error: expected an inert attribute, found an attribute macro
+  --> $DIR/proc-macro-cannot-be-used.rs:56:19
    |
 LL |     fn trait4<'a>(#[id] self: Box<Self>, #[id] arg1: u8, #[id] Vec<u8>);
    |                   ^^^^^
-   |
-   = note: for more information, see https://github.com/rust-lang/rust/issues/29642
-   = help: add `#![feature(custom_attribute)]` to the crate attributes to enable
 
-error[E0658]: the attribute `id` is currently unknown to the compiler and may have meaning added to it in the future
-  --> $DIR/proc-macro-cannot-be-used.rs:54:42
+error: expected an inert attribute, found an attribute macro
+  --> $DIR/proc-macro-cannot-be-used.rs:56:42
    |
 LL |     fn trait4<'a>(#[id] self: Box<Self>, #[id] arg1: u8, #[id] Vec<u8>);
    |                                          ^^^^^
-   |
-   = note: for more information, see https://github.com/rust-lang/rust/issues/29642
-   = help: add `#![feature(custom_attribute)]` to the crate attributes to enable
 
-error[E0658]: the attribute `id` is currently unknown to the compiler and may have meaning added to it in the future
-  --> $DIR/proc-macro-cannot-be-used.rs:54:58
+error: expected an inert attribute, found an attribute macro
+  --> $DIR/proc-macro-cannot-be-used.rs:56:58
    |
 LL |     fn trait4<'a>(#[id] self: Box<Self>, #[id] arg1: u8, #[id] Vec<u8>);
    |                                                          ^^^^^
+
+error: expected an inert attribute, found an attribute macro
+  --> $DIR/proc-macro-cannot-be-used.rs:60:38
    |
-   = note: for more information, see https://github.com/rust-lang/rust/issues/29642
-   = help: add `#![feature(custom_attribute)]` to the crate attributes to enable
+LL |     fn issue_64682_associated_fn<'a>(#[id] arg1: u8, #[id] arg2: u8);
+   |                                      ^^^^^
 
-error: aborting due to 25 previous errors
+error: expected an inert attribute, found an attribute macro
+  --> $DIR/proc-macro-cannot-be-used.rs:60:54
+   |
+LL |     fn issue_64682_associated_fn<'a>(#[id] arg1: u8, #[id] arg2: u8);
+   |                                                      ^^^^^
 
-For more information about this error, try `rustc --explain E0658`.
+error: aborting due to 29 previous errors
+

@@ -32,10 +32,10 @@ The script accepts commands, flags, and arguments to determine what to do:
   ./x.py build --stage 1
 
   # build stage0 libstd
-  ./x.py build --stage 0 src/libstd
+  ./x.py build --stage 0 library/std
 
   # build a particular crate in stage0
-  ./x.py build --stage 0 src/libtest
+  ./x.py build --stage 0 library/test
   ```
 
   If files are dirty that would normally be rebuilt from stage 0, that can be
@@ -55,6 +55,9 @@ The script accepts commands, flags, and arguments to determine what to do:
   # run all unit tests
   ./x.py test
 
+  # execute tool tests
+  ./x.py test tidy
+
   # execute the UI test suite
   ./x.py test src/test/ui
 
@@ -62,11 +65,11 @@ The script accepts commands, flags, and arguments to determine what to do:
   ./x.py test src/test/ui --test-args substring-of-test-name
 
   # execute tests in the standard library in stage0
-  ./x.py test --stage 0 src/libstd
+  ./x.py test --stage 0 library/std
 
   # execute tests in the core and standard library in stage0,
   # without running doc tests (thus avoid depending on building the compiler)
-  ./x.py test --stage 0 --no-doc src/libcore src/libstd
+  ./x.py test --stage 0 --no-doc library/core library/std
 
   # execute all doc tests
   ./x.py test src/doc
@@ -269,9 +272,9 @@ build/
 The current build is unfortunately not quite as simple as `cargo build` in a
 directory, but rather the compiler is split into three different Cargo projects:
 
-* `src/libstd` - the standard library
-* `src/libtest` - testing support, depends on libstd
-* `src/rustc` - the actual compiler itself
+* `library/std` - the standard library
+* `library/test` - testing support, depends on libstd
+* `compiler/rustc` - the actual compiler itself
 
 Each "project" has a corresponding Cargo.lock file with all dependencies, and
 this means that building the compiler involves running Cargo three times. The
@@ -328,6 +331,8 @@ are:
   `Config` struct.
 * Adding a sanity check? Take a look at `bootstrap/sanity.rs`.
 
-If you have any questions feel free to reach out on `#rust-infra` on IRC or ask on
-internals.rust-lang.org. When you encounter bugs, please file issues on the
-rust-lang/rust issue tracker.
+If you have any questions feel free to reach out on `#infra` channel in the
+[Rust Discord server][rust-discord] or ask on internals.rust-lang.org. When
+you encounter bugs, please file issues on the rust-lang/rust issue tracker.
+
+[rust-discord]: https://discord.gg/rust-lang

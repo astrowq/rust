@@ -19,7 +19,8 @@ mod rusti {
           target_os = "macos",
           target_os = "netbsd",
           target_os = "openbsd",
-          target_os = "solaris"))]
+          target_os = "solaris",
+          target_os = "vxworks"))]
 mod m {
     #[main]
     #[cfg(target_arch = "x86")]
@@ -55,16 +56,6 @@ mod m {
 #[cfg(target_os = "windows")]
 mod m {
     #[main]
-    #[cfg(target_arch = "x86")]
-    pub fn main() {
-        unsafe {
-            assert_eq!(::rusti::pref_align_of::<u64>(), 8);
-            assert_eq!(::rusti::min_align_of::<u64>(), 8);
-        }
-    }
-
-    #[main]
-    #[cfg(target_arch = "x86_64")]
     pub fn main() {
         unsafe {
             assert_eq!(::rusti::pref_align_of::<u64>(), 8);

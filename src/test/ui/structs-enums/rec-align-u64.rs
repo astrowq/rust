@@ -40,7 +40,8 @@ struct Outer {
           target_os = "macos",
           target_os = "netbsd",
           target_os = "openbsd",
-          target_os = "solaris"))]
+          target_os = "solaris",
+          target_os = "vxworks"))]
 mod m {
     #[cfg(target_arch = "x86")]
     pub mod m {
@@ -66,13 +67,6 @@ mod m {
 
 #[cfg(target_os = "windows")]
 mod m {
-    #[cfg(target_arch = "x86")]
-    pub mod m {
-        pub fn align() -> usize { 8 }
-        pub fn size() -> usize { 16 }
-    }
-
-    #[cfg(target_arch = "x86_64")]
     pub mod m {
         pub fn align() -> usize { 8 }
         pub fn size() -> usize { 16 }
